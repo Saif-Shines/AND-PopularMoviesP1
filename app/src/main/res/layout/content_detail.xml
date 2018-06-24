@@ -18,7 +18,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/movietitle"
+                android:id="@+id/movie_title"
                 android:layout_marginLeft="@dimen/layout_margin_left"
                 android:text="@string/name_movie"
                 android:textAlignment="center"
