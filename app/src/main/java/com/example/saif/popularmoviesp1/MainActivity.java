@@ -16,10 +16,17 @@ import android.widget.Toast;
 
 import com.example.saif.popularmoviesp1.adapter.MovieAdapter;
 import com.example.saif.popularmoviesp1.api.client;
+import com.example.saif.popularmoviesp1.api.service;
 import com.example.saif.popularmoviesp1.model.Movie;
+import com.example.saif.popularmoviesp1.model.MovieResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -91,7 +98,19 @@ public class MainActivity extends AppCompatActivity {
                return;
            }
            client Client = new Client();
-           Service apiService = Client.getClient();
+           service apiService = Client.getClient().create(service.class);
+            Call<MovieResponse> call = apiService.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
+            call.enqueue(new Callback<MovieResponse>() {
+                @Override
+                public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                    List<Movie> movies = response.body().getResults();
+                }
+
+                @Override
+                public void onFailure(Call<MovieResponse> call, Throwable t) {
+
+                }
+            });
        }
     }
 }
