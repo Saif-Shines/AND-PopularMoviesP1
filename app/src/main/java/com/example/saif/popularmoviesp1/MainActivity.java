@@ -2,6 +2,7 @@ package com.example.saif.popularmoviesp1;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Configuration;
@@ -14,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.example.saif.popularmoviesp1.adapter.MovieAdapter;
+import com.example.saif.popularmoviesp1.api.client;
 import com.example.saif.popularmoviesp1.model.Movie;
 
 import java.util.ArrayList;
@@ -82,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadJSON(){
-
+       try{
+           if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty()){
+               Toast.makeText(getApplicationContext(),"Please obtain your API key",Toast.LENGTH_SHORT).show();
+               pd.dismiss();
+               return;
+           }
+           client Client = new Client();
+           Service apiService = Client.getClient();
+       }
     }
 }

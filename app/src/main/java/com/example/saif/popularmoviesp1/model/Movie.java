@@ -35,11 +35,123 @@ public class Movie {
     @SerializedName("vote_average")
     private Double voteAverage;
 
-    public Movie(String posterPath,boolean adult,String overview,String releaseDate,List<Integer> genreIds, Integer id,
-                 String originalTitle,String originalLanguage,String title, String backdropPath, Double populartity,
-                 Integer voteCount,Boolean video, Double voteAverage){
+
+
+    public Movie(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id,
+                 String originalTitle, String originalLanguage, String title, String backdropPath, Double populartity,
+                 Integer voteCount, Boolean video, Double voteAverage){
         this.posterPath = posterPath;
-        this.
+        this.adult = adult;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.genreIds = genreIds;
+        this.id = id;
+        this.originalTitle = originalTitle;
+        this.originalLanguage = originalLanguage;
+        this.title = title;
+        this.backdropPath = backdropPath;
+        this.voteCount = voteCount;
+        this.video = video;
+        this.voteAverage = voteAverage;
     }
+
+    String baseImageUrl = "https://image.tmdb.org/t/p/w500";
+
+    public String getPosterPath(){
+        return baseImageUrl+posterPath;
+    }
+
+    public void setPosterPath(String posterPath){
+        this.posterPath = posterPath;
+    }
+    public boolean isAdult(){
+        return adult;
+    }
+    public String getOverview(){
+        return overview;
+    }
+
+    public void setOverview(String overview){
+        this.overview = overview;
+    }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<Integer> getGenreIds() {
+        return genreIds;
+    }
+
+    public void setGenreIds(List<Integer> genreIds) {
+        this.genreIds = genreIds;
+    }
+
+    public Integer getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(Integer voteCount) {
+        this.voteCount = voteCount;
+    }
+
+    public String getOriginalTitle() {
+        return originalTitle;
+    }
+
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getBaseImageUrl() {
+        return baseImageUrl;
+    }
+
+    public void setBaseImageUrl(String baseImageUrl) {
+        this.baseImageUrl = baseImageUrl;
+    }
+    public Double getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(Double voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
 
 }
