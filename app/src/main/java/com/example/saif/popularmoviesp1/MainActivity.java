@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.saif.popularmoviesp1.adapter.MovieAdapter;
@@ -104,13 +107,39 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                     List<Movie> movies = response.body().getResults();
+                    recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
+                    recyclerView.smoothScrollToPosition(0);
+                    if(swipeContainer.isRefreshing()){
+                        swipeContainer.setRefreshing(false);
+                    }
+                    pd.dismiss();
                 }
 
                 @Override
                 public void onFailure(Call<MovieResponse> call, Throwable t) {
-
+                        Log.d("Error", t.getMessage());
+                        Toast.makeText(MainActivity.this, "Error Loading data!",Toast.LENGTH_SHORT).show();
                 }
             });
+       }catch (Exception e){
+           Log.d("Error", e.getMessage());
+           Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menu_settings;
+                return true;
+             default:
+                 return super.onOptionsItemSelected(item);
+        }
     }
 }
