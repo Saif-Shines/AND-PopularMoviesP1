@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.saif.popularmoviesp1.DetailActivity;
 import com.example.saif.popularmoviesp1.model.Movie;
 
@@ -74,7 +74,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
                         intent.putExtra("release_dtae",movieList.get(pos).getReleaseDate());
                         intent.addFlags(Intent,FLAG_ACTIVITY_NEW_TASK);
                         mContext.startActivity(intent);
-                        Toast.makeText(v.getContext(),"You clicked"+clickedDataItem.getOriginalTitle(),Toast.LENGTH_SHORT).show())
+                        Toast.makeText(v.getContext(),"You clicked"+clickedDataItem.getOriginalTitle(),Toast.LENGTH_SHORT).show());
 
                     }
                 }

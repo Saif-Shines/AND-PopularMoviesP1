@@ -2,9 +2,10 @@ package com.example.saif.popularmoviesp1;
 
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
-public class SettingsActivity PreferenceActivity{
+public class SettingsActivity extends PreferenceActivity(){
 
     @Override
     public void onCreate(Bundle savedInstanceState){

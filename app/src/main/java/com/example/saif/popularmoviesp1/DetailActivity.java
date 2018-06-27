@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
+
 public class DetailActivity extends AppCompatActivity{
     TextView nameOfMovie, plotSynopsis, userRating, releaseDate;
     ImageView imageView;
@@ -53,14 +55,14 @@ public class DetailActivity extends AppCompatActivity{
         }
     }
 
-    private void initCollapsingToolbar{
+    private void initCollapsingToolbar(){
         final CollapsingToolbarLayout CollapsingToolbarLayout =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(" ");
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
         appBarLayout.setExpanded(true);
 
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout, int verticalOffset){
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout,int verticalOffset){
             if(scrollRange == -1){
                 scrollRange = appBarLayout.getTotalScrollRange();
             }

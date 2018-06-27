@@ -29,13 +29,14 @@ public class MovieResponse {
         return results;
     }
     
-    private void setResults(List<Movie> results){
+    private int setResults(List<Movie> results){
         this.results = results;
+    }
      
     public void setMovies(List<Movie> results){
         this.results = results;
     }
-    public int getTotalResults(){ 
+    public int getTotalResults {
         return totalResults;
     }
     public void setTotalResults(int totalResults){
